@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>InspireMe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-1: #a1c4fd; 
+      --bg-2: #c2e9fb; 
+      --accent: #3b82f6; 
+      --accent-dark: #2563eb;
+      --text: #111827;
+      --muted: #6b7280;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    .card {
+      width: 100%;
+      max-width: 480px;
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(2, 6, 23, 0.15);
+      overflow: hidden;
+    }
+    .header { padding: 22px 24px 12px; text-align: center; }
+    .header h1 { margin: 0 0 8px 0; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
+    .header p { margin: 0; color: var(--muted); }
+    form { padding: 16px 24px 8px; display: grid; gap: 12px; }
+    label { font-size: 14px; font-weight: 600; }
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+      background: #fff;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(59,130,246,0.15); }
+    button {
+      appearance: none;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.02s ease-in, background 0.2s;
+    }
+    button:hover { background: var(--accent-dark); }
+    button:active { transform: translateY(1px); }
+    .footnote { padding: 8px 24px 18px; font-size: 12px; color: var(--muted); text-align: center; }
+    .insta-fixed {
+      position: fixed; bottom: 24px; right: 24px; background: var(--accent); color: white;
+      padding: 10px 16px; border-radius: 12px; font-weight: 600; font-size: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: background 0.3s, transform 0.2s; z-index: 1000;
+    }
+    .insta-fixed a { color: inherit; text-decoration: none; }
+    .insta-fixed:hover { background: var(--accent-dark); transform: translateY(-2px); }
+    .result { padding: 16px 24px 24px; border-top: 1px solid #f1f5f9; display: none; gap: 8px; }
+    .result.show { display: grid; }
+    .badge { width: max-content; background: #eef2ff; color: #3730a3; padding: 6px 10px; border-radius: 999px; font-weight: 700; font-size: 12px; letter-spacing: 0.04em; }
+    .quote { font-size: 18px; line-height: 1.5; margin: 6px 0; }
+    .sub { color: var(--muted); font-size: 14px; }
+   .farewell { 
+  color: #2563eb; 
+  font-size: 16px; 
+  text-align: center; /* centers the text */
+  font-style: normal; /* removes italics */
+  margin-top: 8px; /* optional: adds a bit of spacing above */
+}
+
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <div class="header">
+      <h1>🌟 Hope Generator 🌟</h1>
+      <p>Personalized motivation for your journey</p>
+    </div>
+
+    <form id="hope-form" novalidate>
+      <div>
+        <label for="name">Your Name</label>
+        <input id="name" type="text" placeholder="e.g., Ali" autocomplete="name" required />
+      </div>
+      <div>
+        <label for="dob">Date of Birth</label>
+        <input id="dob" type="date" required />
+      </div>
+      <button type="submit">Get Inspired</button>
+    </form>
+
+    <div class="insta-fixed">
+      <a href="https://www.instagram.com/the_atm.visuals_?igsh=YWltY2d4NXdrN2h3" target="_blank">
+         @the_atm.visuals_
+      </a> 
+    </div>
+
+    <p class="footnote">We don’t store your data — everything happens on your device.</p>
+
+    <section id="result" class="result" aria-live="polite">
+      <span id="sign-badge" class="badge" aria-hidden="true"></span>
+      <div id="message" class="quote"></div>
+      <div id="subtext" class="sub"></div>
+      <div id="farewell" class="farewell"></div>
+    </section>
+  </main>
+
+  <script>
+    function getZodiac(month, day) {
+      if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) return 'Aries';
+      if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) return 'Taurus';
+      if ((month === 5 && day >= 21) || (month === 6 && day <= 20)) return 'Gemini';
+      if ((month === 6 && day >= 21) || (month === 7 && day <= 22)) return 'Cancer';
+      if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) return 'Leo';
+      if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) return 'Virgo';
+      if ((month === 9 && day >= 23) || (month === 10 && day <= 22)) return 'Libra';
+      if ((month === 10 && day >= 23) || (month === 11 && day <= 21)) return 'Scorpio';
+      if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) return 'Sagittarius';
+      if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) return 'Capricorn';
+      if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) return 'Aquarius';
+      return 'Pisces';
+    }
+
+    const quotesBySign = {
+      Aries: ["Your courage is the flame that lights the path — trust yourself and step forward.","The world needs your fire; don’t dim it for anyone.","Boldness opens doors fear will never touch.","You are unstoppable when passion fuels your actions.","Every challenge is fuel for your fearless energy.","Your determination is the bridge to your dreams.","Great leaders are born from brave beginnings — keep leading.","You were made to start revolutions, not wait for them."],
+      Taurus: ["Steadiness is your superpower — slow and steady truly wins the race.","Your patience is not weakness, it’s strength disguised as calm.","Every small step you take builds an unshakable foundation.","Your persistence makes the impossible inevitable.","You carry the power of consistency — that’s how empires rise.","Trust the process — your steady pace outruns quick bursts.","Your strength lies in showing up every single day.","Resilience is written in your soul — keep going."],
+      Gemini: ["Your mind is a universe — never stop exploring it.","Curiosity is your gift; it turns life into an adventure.","Your words carry power — use them to inspire.","Flexibility is your weapon; you bend but never break.","You thrive where others hesitate, because change excites you.","Your duality is balance — embrace every side of yourself.","Every new idea you chase plants seeds of greatness.","Your imagination is the fuel of tomorrow."],
+      Cancer: ["Your kindness is strength — the world heals through your care.","Empathy is your shield and your sword.","The safest place is where your heart leads.","Your sensitivity is not weakness; it’s your radar for truth.","Your nurturing soul makes others bloom — keep shining.","Love is your language; speak it loudly.","The gentlest waves carve the deepest marks — trust your touch.","Your intuition is your compass — follow it without fear."],
+      Leo: ["You were born to shine — never apologize for your light.","Courage is your crown; wear it with pride.","Your energy inspires everyone around you.","Leadership flows through you naturally — embrace it.","Confidence is your gift to the world.","Your roar awakens strength in others.","Even in darkness, you glow brighter than stars.","You are a beacon — keep guiding others forward."],
+      Virgo: ["Details are your canvas — masterpiece lives in your precision.","Perfection isn’t the goal, progress is — and you excel at it.","Your organization creates paths where others see chaos.","You turn discipline into freedom.","Your standards lift everyone higher.","Dedication is your superpower — nothing can stop your growth.","Your focus transforms effort into excellence.","Every detail you perfect is a step to greatness."],
+      Libra: ["Balance is your gift; you bring harmony where others bring conflict.","Your kindness creates ripples of peace everywhere you go.","Fairness is your strength; you make the world gentler.","Your presence inspires unity and understanding.","The world needs your calming energy.","You prove that gentleness is power.","Your charm inspires cooperation and love.","Your soul radiates harmony — keep spreading it."],
+      Scorpio: ["Your intensity transforms obstacles into victories.","You are proof that pressure creates diamonds.","No truth is hidden from your depth — trust it.","Your resilience is unmatched — nothing breaks you.","You rise stronger every time you fall.","Transformation is your magic — embrace it.","You carry the courage to face shadows and turn them into light.","Your passion shakes the world awake."],
+      Sagittarius: ["Your spirit was born to explore — the world is your classroom.","Optimism is your compass — follow it to freedom.","Adventure feeds your soul — never stop seeking.","Your laughter is medicine to those around you.","Your courage inspires others to leap.","Every horizon is waiting for your footsteps.","Dream far, live wide, love boldly.","Your fire spreads hope wherever you go."],
+      Capricorn: ["Discipline is your silent strength — it builds mountains.","Your consistency outlasts talent and luck.","You rise not by chance, but by choice.","Your ambition builds bridges to impossible dreams.","Work today, glory tomorrow — that is your rhythm.","Your responsibility doesn’t weigh you down; it lifts you up.","Persistence is your trademark; success cannot resist you.","You are proof that effort beats excuses."],
+      Aquarius: ["Your ideas can change the world — don’t hide them.","Rebellion with kindness is your gift.","Your uniqueness is your superpower.","The future listens to your imagination.","You innovate where others imitate.","Your compassion fuels revolutions.","You’re not meant to fit in — you’re meant to stand out.","Your vision is tomorrow’s reality."],
+      Pisces: ["Your empathy is a light in dark places.","Dreams are your blueprints — start building them.","Your creativity is your courage speaking.","Compassion flows from you like water — healing all it touches.","Your heart is your greatest strength.","Even small acts of kindness create waves of hope.","Your imagination is limitless — follow where it leads.","You carry the power to heal and inspire others."]
+    };
+
+    const goodbyeMessages = [
+      "Goodbye and keep shining!",
+      "Farewell, may your day be amazing!",
+      "Take care and spread positivity wherever you go!"
+    ];
+
+    function pickRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+    function firstNameOnly(name) { return name.trim().split(/\s+/)[0] || 'Friend'; }
+    function formatDateNice(date) { return date.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }); }
+
+    document.getElementById('hope-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nameInput = document.getElementById('name');
+      const dobInput = document.getElementById('dob');
+      const messageEl = document.getElementById('message');
+      const subEl = document.getElementById('subtext');
+      const badgeEl = document.getElementById('sign-badge');
+      const farewellEl = document.getElementById('farewell');
+      const result = document.getElementById('result');
+
+      const name = nameInput.value.trim();
+      const dobVal = dobInput.value;
+
+      if (!name || !dobVal) {
+        alert('Please enter your name and date of birth.');
+        return;
+      }
+
+      const dob = new Date(dobVal + 'T00:00:00');
+      const month = dob.getMonth() + 1;
+      const day = dob.getDate();
+      const sign = getZodiac(month, day);
+
+      const today = new Date();
+      const isBirthday = today.getMonth() + 1 === month && today.getDate() === day;
+
+      const quote = pickRandom(quotesBySign[sign]);
+      const goodbye = pickRandom(goodbyeMessages);
+      const you = firstNameOnly(name);
+
+      let line = `Hey ${you}, as a ${sign}, ${quote}`;
+      if (isBirthday) {
+        line = `🎉 Happy Birthday, ${you}! As a ${sign}, ${quote}`;
+      }
+
+      messageEl.textContent = line;
+      badgeEl.textContent = sign.toUpperCase();
+      const weekday = dob.toLocaleDateString(undefined, { weekday: 'long' });
+      subEl.textContent = `You were born on a ${weekday} (${formatDateNice(dob)}).`;
+      farewellEl.textContent = goodbye;
+
+      result.classList.add('show');
+      result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  </script>
+</body>
+</html>

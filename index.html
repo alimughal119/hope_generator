@@ -75,42 +75,37 @@
     button:hover { background: var(--accent-dark); }
     button:active { transform: translateY(1px); }
     .footnote { padding: 8px 24px 18px; font-size: 12px; color: var(--muted); text-align: center; }
-  .social-buttons {
+.social-button {
   position: fixed;
   bottom: 24px;
-  right: 24px; /* keep the group at bottom-right */
-  display: flex;
-  gap: 12px; /* spacing between buttons */
-  z-index: 1000;
-}
-
-.social-buttons a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--accent);
-  color: white;
-  padding: 10px 16px;
-  border-radius: 12px;
-  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-family: Arial, sans-serif;
   font-size: 14px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transition: background 0.3s, transform 0.2s;
+  font-weight: bold;
   text-decoration: none;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: background 0.3s, transform 0.2s;
 }
 
-.social-buttons a:hover {
-  background: var(--accent-dark);
-  transform: translateY(-2px);
+/* Hover effect */
+.social-button:hover {
+  transform: translateY(-4px);
 }
 
-/* LinkedIn specific override */
-.social-buttons a.linkedin {
-  background: #0a66c2;
+/* LinkedIn button on left */
+.social-button.linkedin {
+  left: 24px;
+  background-color: #0077b5; /* LinkedIn blue */
 }
-.social-buttons a.linkedin:hover {
-  background: #004182;
+
+/* Instagram button on right */
+.social-button.instagram {
+  right: 24px;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); /* Instagram gradient */
 }
+
 
     .result { padding: 16px 24px 24px; border-top: 1px solid #f1f5f9; display: none; gap: 8px; }
     .result.show { display: grid; }
@@ -148,12 +143,17 @@
 
     
    <div class="social-buttons">
-  <a href="https://www.instagram.com/alimughal119" target="_blank" class="social-button">
-    <img src="instagram.png" alt="Instagram">
-  </a>
-  <a href="https://www.linkedin.com/in/ali-tawassul-aa8460329" target="_blank" class="social-button">
-    <img src="linkedin.png" alt="LinkedIn">
-  </a>
+<!-- LinkedIn (left bottom) -->
+<a href="https://www.linkedin.com/in/ali-tawassul-aa8460329" 
+   class="social-button linkedin" target="_blank">
+   Connect on LinkedIn
+</a>
+
+<!-- Instagram (right bottom) -->
+<a href="https://www.instagram.com/YOUR-INSTAGRAM" 
+   class="social-button instagram" target="_blank">
+   Follow on Instagram
+</a>
 </div>
 
     <p class="footnote">We don’t store your data — everything happens on your device.</p>

@@ -7,6 +7,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  integrity="sha512-pMwybF0K6Qf1rNpeqw52ouH0SLFyt5Gu+6lahG9fYoeAqxzz3ZnoTGPtfHuey3d6A7bkBd6bnhwNHCuk0+H8pg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+
   <style>
     :root {
       --bg-1: #a1c4fd; 
@@ -108,10 +116,18 @@
       <button type="submit">Get Inspired</button>
     </form>
 
-    <div class="insta-fixed">
-      <a href="https://www.instagram.com/the_atm.visuals_?igsh=YWltY2d4NXdrN2h3" target="_blank">
-         @the_atm.visuals_
-      </a> 
+    
+    <div class="social-buttons">
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/alimughal119" class="social-button" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+  </a>
+
+  <!-- LinkedIn -->
+  <a href="https://www.linkedin.com/in/ali-tawassul-aa8460329" class="social-button" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LinkedIn">
+  </a>
+
     </div>
 
     <p class="footnote">We don’t store your data — everything happens on your device.</p>
@@ -176,15 +192,87 @@
                ,"You thrive on ideas, and your mind constantly turns them into innovative solutions."
                ,"Your curiosity leads you to endless discoveries and opens doors to knowledge others overlook."
               ],
-      Cancer: ["Your kindness is strength — the world heals through your care.","Empathy is your shield and your sword.","The safest place is where your heart leads.","Your sensitivity is not weakness; it’s your radar for truth.","Your nurturing soul makes others bloom — keep shining.","Love is your language; speak it loudly.","The gentlest waves carve the deepest marks — trust your touch.","Your intuition is your compass — follow it without fear."],
-      Leo: ["You were born to shine — never apologize for your light.","Courage is your crown; wear it with pride.","Your energy inspires everyone around you.","Leadership flows through you naturally — embrace it.","Confidence is your gift to the world.","Your roar awakens strength in others.","Even in darkness, you glow brighter than stars.","You are a beacon — keep guiding others forward."],
-      Virgo: ["Details are your canvas — masterpiece lives in your precision.","Perfection isn’t the goal, progress is — and you excel at it.","Your organization creates paths where others see chaos.","You turn discipline into freedom.","Your standards lift everyone higher.","Dedication is your superpower — nothing can stop your growth.","Your focus transforms effort into excellence.","Every detail you perfect is a step to greatness."],
-      Libra: ["Balance is your gift; you bring harmony where others bring conflict.","Your kindness creates ripples of peace everywhere you go.","Fairness is your strength; you make the world gentler.","Your presence inspires unity and understanding.","The world needs your calming energy.","You prove that gentleness is power.","Your charm inspires cooperation and love.","Your soul radiates harmony — keep spreading it."],
-      Scorpio: ["Your intensity transforms obstacles into victories.","You are proof that pressure creates diamonds.","No truth is hidden from your depth — trust it.","Your resilience is unmatched — nothing breaks you.","You rise stronger every time you fall.","Transformation is your magic — embrace it.","You carry the courage to face shadows and turn them into light.","Your passion shakes the world awake."],
-      Sagittarius: ["Your spirit was born to explore — the world is your classroom.","Optimism is your compass — follow it to freedom.","Adventure feeds your soul — never stop seeking.","Your laughter is medicine to those around you.","Your courage inspires others to leap.","Every horizon is waiting for your footsteps.","Dream far, live wide, love boldly.","Your fire spreads hope wherever you go."],
-      Capricorn: ["Discipline is your silent strength — it builds mountains.","Your consistency outlasts talent and luck.","You rise not by chance, but by choice.","Your ambition builds bridges to impossible dreams.","Work today, glory tomorrow — that is your rhythm.","Your responsibility doesn’t weigh you down; it lifts you up.","Persistence is your trademark; success cannot resist you.","You are proof that effort beats excuses."],
-      Aquarius: ["Your ideas can change the world — don’t hide them.","Rebellion with kindness is your gift.","Your uniqueness is your superpower.","The future listens to your imagination.","You innovate where others imitate.","Your compassion fuels revolutions.","You’re not meant to fit in — you’re meant to stand out.","Your vision is tomorrow’s reality."],
-      Pisces: ["Your empathy is a light in dark places.","Dreams are your blueprints — start building them.","Your creativity is your courage speaking.","Compassion flows from you like water — healing all it touches.","Your heart is your greatest strength.","Even small acts of kindness create waves of hope.","Your imagination is limitless — follow where it leads.","You carry the power to heal and inspire others."]
+      Cancer: ["Your kindness is strength — the world heals through your care."
+               ,"Empathy is your shield and your sword."
+               ,"The safest place is where your heart leads."
+               ,"Your sensitivity is not weakness; it’s your radar for truth."
+               ,"Your nurturing soul makes others bloom — keep shining."
+               ,"Love is your language; speak it loudly."
+               ,"The gentlest waves carve the deepest marks — trust your touch."
+               ,"Your intuition is your compass — follow it without fear."
+              ],
+      Leo: ["You were born to shine — never apologize for your light."
+            ,"Courage is your crown; wear it with pride."
+            ,"Your energy inspires everyone around you."
+            ,"Leadership flows through you naturally — embrace it."
+            ,"Confidence is your gift to the world."
+            ,"Your roar awakens strength in others."
+            ,"Even in darkness, you glow brighter than stars."
+            ,"You are a beacon — keep guiding others forward."
+           ],
+      Virgo: ["Details are your canvas — masterpiece lives in your precision."
+              ,"Perfection isn’t the goal, progress is — and you excel at it."
+              ,"Your organization creates paths where others see chaos."
+              ,"You turn discipline into freedom."
+              ,"Your standards lift everyone higher."
+              ,"Dedication is your superpower — nothing can stop your growth."
+              ,"Your focus transforms effort into excellence."
+              ,"Every detail you perfect is a step to greatness."
+             ],
+      Libra: ["Balance is your gift; you bring harmony where others bring conflict."
+              ,"Your kindness creates ripples of peace everywhere you go."
+              ,"Fairness is your strength; you make the world gentler."
+              ,"Your presence inspires unity and understanding."
+              ,"The world needs your calming energy."
+              ,"You prove that gentleness is power."
+              ,"Your charm inspires cooperation and love."
+              ,"Your soul radiates harmony — keep spreading it."
+             ],
+      Scorpio: ["Your intensity transforms obstacles into victories."
+                ,"You are proof that pressure creates diamonds."
+                ,"No truth is hidden from your depth — trust it."
+                ,"Your resilience is unmatched — nothing breaks you."
+                ,"You rise stronger every time you fall."
+                ,"Transformation is your magic — embrace it."
+                ,"You carry the courage to face shadows and turn them into light."
+                ,"Your passion shakes the world awake."
+               ],
+      Sagittarius: ["Your spirit was born to explore — the world is your classroom."
+                    ,"Optimism is your compass — follow it to freedom."
+                    ,"Adventure feeds your soul — never stop seeking."
+                    ,"Your laughter is medicine to those around you."
+                    ,"Your courage inspires others to leap."
+                    ,"Every horizon is waiting for your footsteps."
+                    ,"Dream far, live wide, love boldly."
+                    ,"Your fire spreads hope wherever you go."
+                   ],
+      Capricorn: ["Discipline is your silent strength — it builds mountains."
+                  ,"Your consistency outlasts talent and luck."
+                  ,"You rise not by chance, but by choice."
+                  ,"Your ambition builds bridges to impossible dreams."
+                  ,"Work today, glory tomorrow — that is your rhythm."
+                  ,"Your responsibility doesn’t weigh you down; it lifts you up."
+                  ,"Persistence is your trademark; success cannot resist you."
+                  ,"You are proof that effort beats excuses."
+                 ],
+      Aquarius: ["Your ideas can change the world — don’t hide them."
+                 ,"Rebellion with kindness is your gift."
+                 ,"Your uniqueness is your superpower."
+                 ,"The future listens to your imagination."
+                 ,"You innovate where others imitate."
+                 ,"Your compassion fuels revolutions."
+                 ,"You’re not meant to fit in — you’re meant to stand out."
+                 ,"Your vision is tomorrow’s reality."
+                ],
+      Pisces: ["Your empathy is a light in dark places."
+               ,"Dreams are your blueprints — start building them."
+               ,"Your creativity is your courage speaking."
+               ,"Compassion flows from you like water — healing all it touches."
+               ,"Your heart is your greatest strength."
+               ,"Even small acts of kindness create waves of hope."
+               ,"Your imagination is limitless — follow where it leads."
+               ,"You carry the power to heal and inspire others."
+              ]
     };
 
     const goodbyeMessages = [

@@ -75,13 +75,13 @@
     button:hover { background: var(--accent-dark); }
     button:active { transform: translateY(1px); }
     .footnote { padding: 8px 24px 18px; font-size: 12px; color: var(--muted); text-align: center; }
-    .insta-fixed {
+    .social-buttons {
       position: fixed; bottom: 24px; right: 24px; background: var(--accent); color: white;
       padding: 10px 16px; border-radius: 12px; font-weight: 600; font-size: 14px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: background 0.3s, transform 0.2s; z-index: 1000;
     }
-    .insta-fixed a { color: inherit; text-decoration: none; }
-    .insta-fixed:hover { background: var(--accent-dark); transform: translateY(-2px); }
+    .social-buttons a { color: inherit; text-decoration: none; }
+    .social-button :hover { background: var(--accent-dark); transform: translateY(-2px); }
     .result { padding: 16px 24px 24px; border-top: 1px solid #f1f5f9; display: none; gap: 8px; }
     .result.show { display: grid; }
     .badge { width: max-content; background: #eef2ff; color: #3730a3; padding: 6px 10px; border-radius: 999px; font-weight: 700; font-size: 12px; letter-spacing: 0.04em; }
@@ -117,18 +117,14 @@
     </form>
 
     
-    <div class="social-buttons">
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/alimughal119" class="social-button" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+   <div class="social-buttons">
+  <a href="https://www.instagram.com/alimughal119" target="_blank" class="social-button">
+    <img src="instagram.png" alt="Instagram">
   </a>
-
-  <!-- LinkedIn -->
-  <a href="https://www.linkedin.com/in/ali-tawassul-aa8460329" class="social-button" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LinkedIn">
+  <a href="https://www.linkedin.com/in/ali-tawassul-aa8460329" target="_blank" class="social-button">
+    <img src="linkedin.png" alt="LinkedIn">
   </a>
-
-    </div>
+</div>
 
     <p class="footnote">We don’t store your data — everything happens on your device.</p>
 
